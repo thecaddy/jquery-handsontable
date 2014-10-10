@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  * http://handsontable.com/
  *
- * Date: Tue Oct 07 2014 21:47:07 GMT+0200 (CEST)
+ * Date: Thu Oct 09 2014 20:13:15 GMT-0700 (PDT)
  */
 /*jslint white: true, browser: true, plusplus: true, indent: 4, maxerr: 50 */
 
@@ -1542,6 +1542,7 @@ Handsontable.Core = function (rootElement, userSettings) {
     var out = [],
         data = priv.settings.data;
 
+
     for (var i = 0; i < data.length; i++) {
       out.push(data[i][col]);
     }
@@ -1556,6 +1557,9 @@ Handsontable.Core = function (rootElement, userSettings) {
    * @returns value {mixed data type}
    */
   this.getSourceDataAtRow = function (row) {
+    if(this.sortIndex && this.sortIndex.length > 0){
+      row = this.sortIndex[row][0];
+    }
     return priv.settings.data[row];
   };
 
@@ -8180,6 +8184,11 @@ function HandsontableColumnSorting() {
 
     saveSortingState.call(instance);
 
+  };
+
+  this.sortIndex = function(){
+    var instance = this;
+    return this.sortIndex;
   };
 
   this.afterRemoveRow = function(index, amount){

@@ -280,6 +280,11 @@ function HandsontableColumnSorting() {
 
   };
 
+  this.sortIndex = function(){
+    var instance = this;
+    return this.sortIndex;
+  };
+
   this.afterRemoveRow = function(index, amount){
     var instance = this;
 

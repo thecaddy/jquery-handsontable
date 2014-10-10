@@ -1355,6 +1355,7 @@ Handsontable.Core = function (rootElement, userSettings) {
     var out = [],
         data = priv.settings.data;
 
+
     for (var i = 0; i < data.length; i++) {
       out.push(data[i][col]);
     }
@@ -1369,6 +1370,9 @@ Handsontable.Core = function (rootElement, userSettings) {
    * @returns value {mixed data type}
    */
   this.getSourceDataAtRow = function (row) {
+    if(this.sortIndex && this.sortIndex.length > 0){
+      row = this.sortIndex[row][0];
+    }
     return priv.settings.data[row];
   };
 
