@@ -181,6 +181,8 @@ Handsontable.TableView = function (instance) {
       var arr = [];
       if(instance.hasColHeaders()) {
         arr.push(function (index, TH) {
+
+          console.log('here',index, TH);
           that.appendColHeader(index, TH);
         });
       }
@@ -411,9 +413,16 @@ Handsontable.TableView.prototype.appendColHeader = function (col, TH) {
 
   DIV.className = 'relative';
   SPAN.className = 'colHeader';
-
   if (col > -1) {
-    Handsontable.Dom.fastInnerHTML(SPAN, this.instance.getColHeader(col));
+    var column = this.instance.getColHeader(col);
+    if(column.title){
+      if(column.class){
+        DIV.className += ' ' + column.class;
+      }
+      Handsontable.Dom.fastInnerHTML(SPAN, column.title);
+    }else{
+      Handsontable.Dom.fastInnerHTML(SPAN, column);
+    }
   } else {
     Handsontable.Dom.fastInnerText(SPAN, '\u00A0');
   }

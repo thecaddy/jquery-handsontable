@@ -1609,7 +1609,7 @@ Handsontable.Core = function (rootElement, userSettings) {
       col = Handsontable.hooks.execute(instance, 'modifyCol', col);
 
       if (priv.settings.columns && priv.settings.columns[col] && priv.settings.columns[col].title) {
-        return priv.settings.columns[col].title;
+        return priv.settings.columns[col];
       }
       else if (Object.prototype.toString.call(priv.settings.colHeaders) === '[object Array]' && priv.settings.colHeaders[col] !== void 0) {
         return priv.settings.colHeaders[col];

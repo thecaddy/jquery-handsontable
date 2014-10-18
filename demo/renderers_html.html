@@ -449,6 +449,120 @@
     </div>
   </div>
 </div>
+<div class="rowLayout">
+  <div class="descLayout">
+    <div class="pad" data-jsfiddle="example2">
+      <a name="dropdown"></a>
+
+      <h2>Give a single header a class</h2>
+
+      <p></p>
+
+      <div id="example4"></div>
+
+      <p>
+        <button name="dump" data-dump="#example4" title="Prints current data source to Firebug/Chrome Dev Tools">
+          Dump data to console
+        </button>
+      </p>
+    </div>
+  </div>
+
+  <div class="codeLayout">
+    <div class="pad">
+      <div class="jsFiddle">
+        <button class="jsFiddleLink" data-runfiddle="example2">Edit in jsFiddle</button>
+      </div>
+
+      <style data-jsfiddle="example3">
+        .changeType {
+          border: 1px solid #bbb;
+          color: #bbb;
+          background: #eee;
+          border-radius: 2px;
+          padding: 2px;
+          font-size: 9px;
+
+          float: right;
+          line-height: 9px;
+          margin: 3px 3px 0 0;
+        }
+
+        .changeType:hover {
+          border: 1px solid #777;
+          color: #777;
+          cursor: pointer;
+        }
+
+        .changeType.pressed {
+          background-color: #999;
+        }
+
+        .changeTypeMenu {
+          position: absolute;
+          border: 1px solid #ccc;
+          margin-top: 18px;
+          box-shadow: 0 1px 3px -1px #323232;
+          background: white;
+          padding: 0;
+          display: none;
+          z-index: 10;
+        }
+
+        .changeTypeMenu li{
+          text-align: left;
+          list-style: none;
+          padding: 2px 20px;
+          cursor: pointer;
+        }
+
+        .changeTypeMenu li.active:before {
+          content: "\2714";
+          margin-left: -15px;
+          margin-right: 3px;
+        }
+
+        .changeTypeMenu li:hover {
+          background: #eee;
+        }
+        .selected{
+          background: blue;
+        }
+
+
+      </style>
+
+      <script data-jsfiddle="example4">
+        var data = [
+          ["", "Kia", "Nissan", "Toyota", "Honda"],
+          ["2008", 10, 11, 12, 13],
+          ["2009", 20, 11, 14, 13],
+          ["2010", 30, 15, 12, 13]
+        ];
+
+        var columns = [
+          {title:'Seat'},
+          {title:'Name', class:'selected'},
+          {title:'Place'},
+          {title:'Direct'},
+          {title:'Order', class:'selected'}        
+        ];
+
+        $('#example4').handsontable({
+          data: data,
+          startRows: 5,
+          startCols: 5,
+          colHeaders: true,
+          columns: columns,
+          minSpareRows: 1
+        });
+
+
+
+      </script>
+    </div>
+  </div>
+</div>
 
 <div class="footer-text">Handsontable &copy; 2012-2014 Marcin Warpechowski and contributors.<br> Code and documentation
   licensed under the The MIT License.

@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  * http://handsontable.com/
  *
- * Date: Thu Oct 09 2014 20:13:15 GMT-0700 (PDT)
+ * Date: Sat Oct 18 2014 16:54:51 GMT-0700 (PDT)
  */
 /*jslint white: true, browser: true, plusplus: true, indent: 4, maxerr: 50 */
 
@@ -1796,7 +1796,7 @@ Handsontable.Core = function (rootElement, userSettings) {
       col = Handsontable.hooks.execute(instance, 'modifyCol', col);
 
       if (priv.settings.columns && priv.settings.columns[col] && priv.settings.columns[col].title) {
-        return priv.settings.columns[col].title;
+        return priv.settings.columns[col];
       }
       else if (Object.prototype.toString.call(priv.settings.colHeaders) === '[object Array]' && priv.settings.colHeaders[col] !== void 0) {
         return priv.settings.colHeaders[col];
@@ -3133,6 +3133,8 @@ Handsontable.TableView = function (instance) {
       var arr = [];
       if(instance.hasColHeaders()) {
         arr.push(function (index, TH) {
+
+          console.log('here',index, TH);
           that.appendColHeader(index, TH);
         });
       }
@@ -3363,9 +3365,17 @@ Handsontable.TableView.prototype.appendColHeader = function (col, TH) {
 
   DIV.className = 'relative';
   SPAN.className = 'colHeader';
-
   if (col > -1) {
-    Handsontable.Dom.fastInnerHTML(SPAN, this.instance.getColHeader(col));
+    console.log('my header', this.instance.getColHeader(col));
+    var column = this.instance.getColHeader(col);
+    if(column.title){
+      if(column.class){
+        DIV.className += ' ' + column.class;
+      }
+      Handsontable.Dom.fastInnerHTML(SPAN, column.title);
+    }else{
+      Handsontable.Dom.fastInnerHTML(SPAN, column);
+    }
   } else {
     Handsontable.Dom.fastInnerText(SPAN, '\u00A0');
   }
