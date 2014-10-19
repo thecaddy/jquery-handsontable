@@ -181,8 +181,6 @@ Handsontable.TableView = function (instance) {
       var arr = [];
       if(instance.hasColHeaders()) {
         arr.push(function (index, TH) {
-
-          console.log('here',index, TH);
           that.appendColHeader(index, TH);
         });
       }

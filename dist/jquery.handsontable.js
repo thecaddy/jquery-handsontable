@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  * http://handsontable.com/
  *
- * Date: Sat Oct 18 2014 16:54:51 GMT-0700 (PDT)
+ * Date: Sat Oct 18 2014 17:05:34 GMT-0700 (PDT)
  */
 /*jslint white: true, browser: true, plusplus: true, indent: 4, maxerr: 50 */
 
@@ -3133,8 +3133,6 @@ Handsontable.TableView = function (instance) {
       var arr = [];
       if(instance.hasColHeaders()) {
         arr.push(function (index, TH) {
-
-          console.log('here',index, TH);
           that.appendColHeader(index, TH);
         });
       }
@@ -3366,7 +3364,6 @@ Handsontable.TableView.prototype.appendColHeader = function (col, TH) {
   DIV.className = 'relative';
   SPAN.className = 'colHeader';
   if (col > -1) {
-    console.log('my header', this.instance.getColHeader(col));
     var column = this.instance.getColHeader(col);
     if(column.title){
       if(column.class){
