@@ -287,7 +287,7 @@ Handsontable.Dom.isVisible = function (elem) {
         return false; //this is a node detached from document in IE8
       }
     }
-    else if (next.style.display === 'none') {
+    else if (next.style && next.style.display === 'none') {
       return false;
     }
     next = next.parentNode;

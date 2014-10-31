@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  * http://handsontable.com/
  *
- * Date: Sat Oct 18 2014 17:05:34 GMT-0700 (PDT)
+ * Date: Fri Oct 31 2014 09:46:43 GMT-0700 (PDT)
  */
 /*jslint white: true, browser: true, plusplus: true, indent: 4, maxerr: 50 */
 
@@ -2697,7 +2697,7 @@ Handsontable.Dom.isVisible = function (elem) {
         return false; //this is a node detached from document in IE8
       }
     }
-    else if (next.style.display === 'none') {
+    else if (next.style && next.style.display === 'none') {
       return false;
     }
     next = next.parentNode;
